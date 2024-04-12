@@ -1,0 +1,55 @@
+
+div.busqueda{
+    float: left;
+    max-width: 20%;
+    margin: auto;
+}
+
+button.btn.btn-success.agregar{
+    margin: 5px;
+    width: 100%;
+}
+
+div.tabla{
+    float: right;
+    width: 70%;
+    margin: auto;
+    overflow-y: auto;
+    height: 600px;
+}
+
+.titulo{
+    text-align: center;
+    text-shadow: 2px 2px 2px #606060b6;
+    padding-top: 5px;
+}
+
+.th{
+    text-align: center;
+    font-size: larger;
+    top: 0;
+    position: sticky;
+    position: -webkit-sticky;
+}
+
+.tr{
+    text-align: center;
+}
+
+.boton:hover{
+    color: rgb(0, 0, 0);
+    background-color: rgb(35, 251, 255);
+    border: #000000b6;
+}
+
+.botonE:hover{
+    color: black;
+    background-color: #fa27deb6;
+    border: black;
+}
+
+.edita{
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+}

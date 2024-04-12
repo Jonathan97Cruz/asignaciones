@@ -1,0 +1,215 @@
+[26-Feb-2024 18:22:23 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '= '1' ORDER BY fa_nombre ASC' at line 3 in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php:28
+Stack trace:
+#0 /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php(28): mysqli->query()
+#1 {main}
+  thrown in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php on line 28
+[27-Feb-2024 19:18:12 UTC] PHP Warning:  Undefined array key "active" in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/agregarUsuario.php on line 4
+[27-Feb-2024 19:18:12 UTC] PHP Warning:  Undefined array key "fa_rol" in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/agregarUsuario.php on line 34
+[27-Feb-2024 19:18:12 UTC] PHP Warning:  Undefined array key "fa_rol" in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/agregarUsuario.php on line 34
+[27-Feb-2024 19:18:12 UTC] PHP Warning:  Undefined array key "fa_nombre" in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/agregarUsuario.php on line 74
+[27-Feb-2024 19:18:12 UTC] PHP Warning:  Undefined array key "fa_apellido" in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/agregarUsuario.php on line 74
+[27-Feb-2024 19:20:29 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fa_estatus = '1' ORDER BY fa_nombre ASC' at line 3 in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php:28
+Stack trace:
+#0 /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php(28): mysqli->query()
+#1 {main}
+  thrown in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php on line 28
+[27-Feb-2024 19:20:29 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fa_estatus = '1' ORDER BY fa_nombre ASC' at line 3 in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php:28
+Stack trace:
+#0 /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php(28): mysqli->query()
+#1 {main}
+  thrown in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php on line 28
+[27-Feb-2024 19:20:29 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fa_estatus = '1' ORDER BY fa_nombre ASC' at line 3 in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php:28
+Stack trace:
+#0 /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php(28): mysqli->query()
+#1 {main}
+  thrown in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php on line 28
+[27-Feb-2024 19:20:29 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fa_estatus = '1' ORDER BY fa_nombre ASC' at line 3 in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php:28
+Stack trace:
+#0 /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php(28): mysqli->query()
+#1 {main}
+  thrown in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php on line 28
+[27-Feb-2024 19:20:30 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fa_estatus = '1' ORDER BY fa_nombre ASC' at line 3 in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php:28
+Stack trace:
+#0 /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php(28): mysqli->query()
+#1 {main}
+  thrown in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php on line 28
+[27-Feb-2024 19:20:30 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fa_estatus = '1' ORDER BY fa_nombre ASC' at line 3 in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php:28
+Stack trace:
+#0 /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php(28): mysqli->query()
+#1 {main}
+  thrown in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php on line 28
+[27-Feb-2024 19:20:30 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fa_estatus = '1' ORDER BY fa_nombre ASC' at line 3 in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php:28
+Stack trace:
+#0 /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php(28): mysqli->query()
+#1 {main}
+  thrown in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php on line 28
+[27-Feb-2024 19:20:33 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fa_estatus = '1' ORDER BY fa_nombre ASC' at line 3 in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php:28
+Stack trace:
+#0 /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php(28): mysqli->query()
+#1 {main}
+  thrown in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php on line 28
+[27-Feb-2024 19:20:33 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fa_estatus = '1' ORDER BY fa_nombre ASC' at line 3 in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php:28
+Stack trace:
+#0 /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php(28): mysqli->query()
+#1 {main}
+  thrown in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php on line 28
+[27-Feb-2024 19:20:33 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fa_estatus = '1' ORDER BY fa_nombre ASC' at line 3 in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php:28
+Stack trace:
+#0 /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php(28): mysqli->query()
+#1 {main}
+  thrown in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php on line 28
+[27-Feb-2024 19:20:33 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fa_estatus = '1' ORDER BY fa_nombre ASC' at line 3 in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php:28
+Stack trace:
+#0 /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php(28): mysqli->query()
+#1 {main}
+  thrown in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php on line 28
+[27-Feb-2024 19:20:39 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fa_estatus = '1' ORDER BY fa_nombre ASC' at line 3 in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php:28
+Stack trace:
+#0 /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php(28): mysqli->query()
+#1 {main}
+  thrown in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php on line 28
+[27-Feb-2024 19:20:39 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fa_estatus = '1' ORDER BY fa_nombre ASC' at line 3 in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php:28
+Stack trace:
+#0 /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php(28): mysqli->query()
+#1 {main}
+  thrown in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php on line 28
+[27-Feb-2024 19:20:40 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fa_estatus = '1' ORDER BY fa_nombre ASC' at line 3 in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php:28
+Stack trace:
+#0 /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php(28): mysqli->query()
+#1 {main}
+  thrown in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php on line 28
+[27-Feb-2024 19:20:40 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fa_estatus = '1' ORDER BY fa_nombre ASC' at line 3 in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php:28
+Stack trace:
+#0 /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php(28): mysqli->query()
+#1 {main}
+  thrown in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php on line 28
+[27-Feb-2024 19:20:40 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fa_estatus = '1' ORDER BY fa_nombre ASC' at line 3 in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php:28
+Stack trace:
+#0 /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php(28): mysqli->query()
+#1 {main}
+  thrown in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php on line 28
+[27-Feb-2024 19:20:40 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fa_estatus = '1' ORDER BY fa_nombre ASC' at line 3 in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php:28
+Stack trace:
+#0 /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php(28): mysqli->query()
+#1 {main}
+  thrown in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php on line 28
+[27-Feb-2024 19:20:41 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fa_estatus = '1' ORDER BY fa_nombre ASC' at line 3 in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php:28
+Stack trace:
+#0 /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php(28): mysqli->query()
+#1 {main}
+  thrown in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php on line 28
+[27-Feb-2024 19:20:51 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fa_estatus = '1' ORDER BY fa_nombre ASC' at line 3 in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php:28
+Stack trace:
+#0 /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php(28): mysqli->query()
+#1 {main}
+  thrown in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php on line 28
+[27-Feb-2024 19:20:51 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fa_estatus = '1' ORDER BY fa_nombre ASC' at line 3 in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php:28
+Stack trace:
+#0 /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php(28): mysqli->query()
+#1 {main}
+  thrown in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php on line 28
+[27-Feb-2024 19:20:51 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fa_estatus = '1' ORDER BY fa_nombre ASC' at line 3 in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php:28
+Stack trace:
+#0 /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php(28): mysqli->query()
+#1 {main}
+  thrown in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php on line 28
+[27-Feb-2024 19:20:51 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fa_estatus = '1' ORDER BY fa_nombre ASC' at line 3 in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php:28
+Stack trace:
+#0 /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php(28): mysqli->query()
+#1 {main}
+  thrown in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php on line 28
+[27-Feb-2024 19:20:51 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fa_estatus = '1' ORDER BY fa_nombre ASC' at line 3 in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php:28
+Stack trace:
+#0 /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php(28): mysqli->query()
+#1 {main}
+  thrown in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php on line 28
+[27-Feb-2024 19:20:51 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fa_estatus = '1' ORDER BY fa_nombre ASC' at line 3 in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php:28
+Stack trace:
+#0 /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php(28): mysqli->query()
+#1 {main}
+  thrown in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php on line 28
+[27-Feb-2024 19:20:53 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fa_estatus = '1' ORDER BY fa_nombre ASC' at line 3 in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php:28
+Stack trace:
+#0 /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php(28): mysqli->query()
+#1 {main}
+  thrown in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php on line 28
+[27-Feb-2024 19:20:53 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fa_estatus = '1' ORDER BY fa_nombre ASC' at line 3 in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php:28
+Stack trace:
+#0 /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php(28): mysqli->query()
+#1 {main}
+  thrown in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php on line 28
+[27-Feb-2024 19:20:53 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fa_estatus = '1' ORDER BY fa_nombre ASC' at line 3 in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php:28
+Stack trace:
+#0 /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php(28): mysqli->query()
+#1 {main}
+  thrown in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php on line 28
+[27-Feb-2024 19:20:53 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fa_estatus = '1' ORDER BY fa_nombre ASC' at line 3 in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php:28
+Stack trace:
+#0 /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php(28): mysqli->query()
+#1 {main}
+  thrown in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php on line 28
+[27-Feb-2024 19:20:54 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fa_estatus = '1' ORDER BY fa_nombre ASC' at line 3 in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php:28
+Stack trace:
+#0 /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php(28): mysqli->query()
+#1 {main}
+  thrown in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php on line 28
+[27-Feb-2024 19:24:32 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'asignaciones.fa_usuario' doesn't exist in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/eliminarUsuario.php:21
+Stack trace:
+#0 /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/eliminarUsuario.php(21): mysqli_query()
+#1 {main}
+  thrown in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/eliminarUsuario.php on line 21
+[27-Feb-2024 19:25:09 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'asignaciones.fa_usuario' doesn't exist in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/eliminarUsuario.php:21
+Stack trace:
+#0 /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/eliminarUsuario.php(21): mysqli_query()
+#1 {main}
+  thrown in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/eliminarUsuario.php on line 21
+[27-Feb-2024 22:39:46 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fa_estatus = '1' ORDER BY fa_nombre ASC' at line 3 in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php:28
+Stack trace:
+#0 /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php(28): mysqli->query()
+#1 {main}
+  thrown in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php on line 28
+[27-Feb-2024 22:39:46 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fa_estatus = '1' ORDER BY fa_nombre ASC' at line 3 in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php:28
+Stack trace:
+#0 /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php(28): mysqli->query()
+#1 {main}
+  thrown in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php on line 28
+[27-Feb-2024 22:39:46 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fa_estatus = '1' ORDER BY fa_nombre ASC' at line 3 in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php:28
+Stack trace:
+#0 /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php(28): mysqli->query()
+#1 {main}
+  thrown in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php on line 28
+[27-Feb-2024 22:39:47 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fa_estatus = '1' ORDER BY fa_nombre ASC' at line 3 in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php:28
+Stack trace:
+#0 /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php(28): mysqli->query()
+#1 {main}
+  thrown in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php on line 28
+[27-Feb-2024 22:39:47 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fa_estatus = '1' ORDER BY fa_nombre ASC' at line 3 in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php:28
+Stack trace:
+#0 /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php(28): mysqli->query()
+#1 {main}
+  thrown in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php on line 28
+[27-Feb-2024 22:39:48 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fa_estatus = '1' ORDER BY fa_nombre ASC' at line 3 in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php:28
+Stack trace:
+#0 /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php(28): mysqli->query()
+#1 {main}
+  thrown in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php on line 28
+[27-Feb-2024 22:39:48 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fa_estatus = '1' ORDER BY fa_nombre ASC' at line 3 in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php:28
+Stack trace:
+#0 /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php(28): mysqli->query()
+#1 {main}
+  thrown in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php on line 28
+[27-Feb-2024 22:39:48 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fa_estatus = '1' ORDER BY fa_nombre ASC' at line 3 in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php:28
+Stack trace:
+#0 /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php(28): mysqli->query()
+#1 {main}
+  thrown in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php on line 28
+[27-Feb-2024 22:39:48 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fa_estatus = '1' ORDER BY fa_nombre ASC' at line 3 in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php:28
+Stack trace:
+#0 /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php(28): mysqli->query()
+#1 {main}
+  thrown in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/busquedaUsuario.php on line 28
+[27-Feb-2024 22:47:20 UTC] PHP Warning:  Undefined array key "active" in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/agregarUsuario.php on line 4
+[27-Feb-2024 22:47:20 UTC] PHP Warning:  Undefined array key "fa_rol" in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/agregarUsuario.php on line 34
+[27-Feb-2024 22:47:20 UTC] PHP Warning:  Undefined array key "fa_rol" in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/agregarUsuario.php on line 34
+[27-Feb-2024 22:47:20 UTC] PHP Warning:  Undefined array key "fa_nombre" in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/agregarUsuario.php on line 74
+[27-Feb-2024 22:47:20 UTC] PHP Warning:  Undefined array key "fa_apellido" in /home/lf9ay194dlb2/public_html/asignaciones/sistema/usuarios/agregarUsuario.php on line 74

@@ -1,0 +1,63 @@
+<?php
+session_start();
+if ($_SESSION['active'] !=  true) {
+    session_destroy();
+    header('location:../../../../index.php');
+}
+require '../../../conexion/conexion.php';
+
+$columnas = [
+    'fa_etiquetas.noSeguimiento', 'fa_etiquetas.cliente', 'fa_etiquetas.norma', 'fa_etiquetas.estatus', 'fa_etiquetas.asignado', 'fa_usuarios.id_usuario', 'fa_usuarios.fa_nombre', 'fa_usuarios.fa_apellido',
+    'fa_etiquetas.id', 'fa_etiquetas.fechaRecepcion', 'fa_normas.id', 'fa_normas.norma'
+];
+$tabla = 'fa_etiquetas';
+$campo = isset($_POST['campo']) ? $conexion->real_escape_string($_POST['campo']) : null;
+$where = '';
+
+if ($campo != null) {
+    $where = "WHERE (";
+
+    $cont = count($columnas);
+    for ($i = 0; $i < $cont; $i++) {
+        $where .= $columnas[$i] . " LIKE '%" . $campo . "%' OR ";
+    }
+    $where = substr_replace($where, "", -3);
+    $where .= ")";
+}
+
+$sql = "SELECT " . implode(", ", $columnas) . "
+FROM $tabla
+INNER JOIN fa_usuarios ON fa_etiquetas.asignado = fa_usuarios.id_usuario
+INNER JOIN fa_normas ON fa_etiquetas.norma = fa_normas.id
+$where ORDER BY fa_etiquetas.fechaRecepcion DESC
+";
+
+$resultado = $conexion->query($sql);
+$num_rows = $resultado->num_rows;
+
+$html = "";
+if ($num_rows > 0) {
+    $contador = 0;
+    while ($row = $resultado->fetch_assoc()) {
+        $contador += 1;
+        $html .= '<tr>
+                    <td>' . $contador . '</td>
+                    <td>' . $row['noSeguimiento'] . '</td>
+                    <td>' . $row['cliente'] . '</td>
+                    <td>' . $row['norma'] . '</td>
+                    <td>' . $row['estatus'] . '</td>
+                    <td>' . $row['fa_nombre'] . ' ' . $row['fa_apellido'] . '</td>
+                    <td>
+                        <form action="editarEtiqueta.php" method="post">
+                            <input type="hidden" name="idEtiqueta" value=' . $row['id'] . '>
+                            <center><button type="submit" class="btn btn-info"><i class="fa-solid fa-hand-pointer"></i></button></center>
+                        </form>
+                    </td>
+                </tr>';
+    }
+} else {
+    $html .= '<tr>
+        <td colspan="7">Sin resultados</td>
+    </tr>';
+}
+echo json_encode($html, JSON_UNESCAPED_UNICODE);
