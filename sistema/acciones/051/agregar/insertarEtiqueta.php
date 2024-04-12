@@ -78,8 +78,10 @@ if ($ultimoSeguimiento) {
     $partes = explode('-', $ultimoSeguimiento);
     $numeroFinal = intval(substr($partes[0], -4));
 } else {
-    $numeroFinal = 0;
+    $numeroFinal = 1;
 }
+$numeroFinal++;
+$numeroSeguimientoB = "FS/" . sprintf("%02d", $mes) . $año . "/" . sprintf("%04d", $numeroFinal);
 
 for ($i = 0; $i < count($tipo); $i++) {
 
@@ -99,8 +101,11 @@ for ($i = 0; $i < count($tipo); $i++) {
                                         VALUES('$denominacion[$i]','$marca[$i]','$modelo[$i]','$tipo[$i]','$precio[$i]','$revision[$i]',
                                                 '$historial','$tiempo[$i]','$fechaLibre[$i]','$fechaFinal','$seguimiento[$i]','$cliente','$norma','$asignado','$estatus' )");
     } elseif ($seguimiento[$i] == NULL) {
-        $numeroFinal++;
-        $numeroSeguimiento = "FS/" . sprintf("%02d", $mes) . $año . "/" . sprintf("%04d", $numeroFinal);
+        $numeroSeguimiento = $numeroSeguimientoB;
+        if($i > 0){
+            $numeroConsecutivo = $i;
+            $numeroSeguimiento .= "-" . $numeroConsecutivo;
+        }        
         if ($tiempo[$i] != '0' && $fechaLibre[$i] == NULL) {
             $festivos = new Festivos();
             //Agregar días de tiempo a hoy para fecha final
@@ -115,13 +120,6 @@ for ($i = 0; $i < count($tipo); $i++) {
                                                         observaciones, tiempo, fechaLibre,fechaFinal,noSeguimiento, cliente, norma, asignado, estatus) 
                                             VALUES('$denominacion[$i]','$marca[$i]','$modelo[$i]','$tipo[$i]','$precio[$i]','$revision[$i]',
                                                     '$historial','$tiempo[$i]','$fechaLibre[$i]','$fechaFinal','$numeroSeguimiento','$cliente','$norma','$asignado','$estatus' )");
-
-        if ($i > 0) {
-            //$numeroConsecutivo = $i - 1;
-            $numeroSeguimiento .= "-" . ($i);
-            $idUltimo = mysqli_insert_id($conexion);
-            mysqli_query($conexion, "UPDATE fa_etiquetas SET noSeguimiento = '$numeroSeguimiento' WHERE id = $idUltimo");
-        }
     }
 }
 if ($etiqueta) {

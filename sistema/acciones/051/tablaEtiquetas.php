@@ -29,7 +29,7 @@ $sql = "SELECT " . implode(", ", $columnas) . "
 FROM $tabla
 INNER JOIN fa_usuarios ON fa_etiquetas.asignado = fa_usuarios.id_usuario
 INNER JOIN fa_normas ON fa_etiquetas.norma = fa_normas.id
-$where ORDER BY fa_etiquetas.fechaRecepcion DESC
+$where ORDER BY fa_etiquetas.noSeguimiento DESC
 ";
 
 $resultado = $conexion->query($sql);
