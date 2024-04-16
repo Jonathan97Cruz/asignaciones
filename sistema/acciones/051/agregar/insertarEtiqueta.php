@@ -57,6 +57,7 @@ $marca = (empty($_POST['marca'])) ? NULL : $_POST['marca'];
 $modelo = (empty($_POST['modelo'])) ? NULL : $_POST['modelo'];
 $tipo = (empty($_POST['tipo'])) ? NULL : $_POST['tipo'];
 $precio = (empty($_POST['precio'])) ? NULL : $_POST['precio'];
+$precioDocumento = (empty($_POST['precioDocumento'])) ? NULL : $_POST['precioDocumento'];
 $revision = (empty($_POST['revision'])) ? NULL : $_POST['revision']; //adicional
 $observacion = (empty($_POST['observacion'])) ? NULL : $_POST['observacion'];
 $tiempo = (empty($_POST['tiempo'])) ? NULL : $_POST['tiempo'];
@@ -68,7 +69,6 @@ $año = date('Y');
 
 $date = new DateTime();
 $formateada = $date->format('d-m-Y H:i:s');
-//$numeroFinal = 0;
 
 $consultaUltimoSeguimiento = mysqli_query($conexion, "SELECT MAX(noSeguimiento) AS ultimo_seguimiento FROM fa_etiquetas");
 $resultadoConsulta = mysqli_fetch_assoc($consultaUltimoSeguimiento);
@@ -82,48 +82,82 @@ if ($ultimoSeguimiento) {
 }
 $numeroFinal++;
 $numeroSeguimientoB = "FS/" . sprintf("%02d", $mes) . $año . "/" . sprintf("%04d", $numeroFinal);
-
-for ($i = 0; $i < count($tipo); $i++) {
-
-    if ($seguimiento[$i] != NULL) {
-        if ($tiempo[$i] != '0' && $fechaLibre[$i] == NULL) {
-            $festivos = new Festivos();
-            //Agregar días de tiempo a hoy para fecha final
-            $fechaFinal = $festivos->contarDiasFestivos($hoy, $tiempo[$i]); //regresa un string
-        } elseif ($tiempo[$i] == '0' && $fechaLibre[$i] != NULL) {
-            $festivos = new Festivos();
-            //Agregar días de fechaLibre a hoy para fecha final
-            $fechaFinal = $festivos->contarDiasFestivos($hoy, $fechaLibre[$i]);
-        }
-        $historial =  $revision[$i] . ' ' . $tipo[$i] . ' $' . $precio[$i] . ' ' . $observacion[$i] . ' ' . $formateada . ' (' . $_SESSION['fa_nombre'] . ')';
-        $etiqueta = mysqli_query($conexion, "INSERT INTO fa_etiquetas(denominacion, marca, modelo, tipo, precio, revision,
-                                                     observaciones, tiempo, fechaLibre,fechaFinal,noSeguimiento, cliente, norma, asignado, estatus) 
+if ($estatus != 'Pendiente') {
+    for ($i = 0; $i < count($tipo); $i++) {
+        if ($seguimiento[$i] != NULL) {
+            if ($tiempo[$i] != '0' && $fechaLibre[$i] == NULL) {
+                $festivos = new Festivos();
+                //Agregar días de tiempo a hoy para fecha final
+                $fechaFinal = $festivos->contarDiasFestivos($hoy, $tiempo[$i]); //regresa un string
+                $historial = $cliente[$i] . ' ' . $norma[$i] . ' ' . $asignado[$i] . ' ' . $estatus[$i] . ' ' . $denominacion[$i] . ' ' . $marca[$i] . ' ' . $modelo[$i] . ' ' . $tipo[$i] . ' ' .  $revision[$i]
+                . ' Costo etiqueta: $' . $precio[$i] . ' Costo del documento: $' . $precioDocumento[$i] . ' ' . $tiempo[$i] .' '. $observacion[$i] . ' ' . $formateada . ' (' . $_SESSION['fa_nombre'] . ')';
+            } elseif ($tiempo[$i] == '0' && $fechaLibre[$i] != NULL) {
+                $festivos = new Festivos();
+                //Agregar días de fechaLibre a hoy para fecha final
+                $fechaFinal = $festivos->contarDiasFestivos($hoy, $fechaLibre[$i]);
+                $historial = $cliente[$i] . ' ' . $norma[$i] . ' ' . $asignado[$i] . ' ' . $estatus[$i] . ' ' . $denominacion[$i] . ' ' . $marca[$i] . ' ' . $modelo[$i] . ' ' . $tipo[$i] . ' ' .  $revision[$i]
+                . ' Costo etiqueta: $' . $precio[$i] . ' Costo del documento: $' . $precioDocumento[$i] . ' ' . $fechaLibre[$i] .' '. $observacion[$i] . ' ' . $formateada . ' (' . $_SESSION['fa_nombre'] . ')';
+            }
+            $etiqueta = mysqli_query($conexion, "INSERT INTO fa_etiquetas(denominacion, marca, modelo, tipo, precio, revision,
+                                                     observaciones, tiempo, fechaLibre,fechaFinal,noSeguimiento, cliente, norma, asignado, estatus, costoDoc) 
                                         VALUES('$denominacion[$i]','$marca[$i]','$modelo[$i]','$tipo[$i]','$precio[$i]','$revision[$i]',
-                                                '$historial','$tiempo[$i]','$fechaLibre[$i]','$fechaFinal','$seguimiento[$i]','$cliente','$norma','$asignado','$estatus' )");
-    } elseif ($seguimiento[$i] == NULL) {
-        $numeroSeguimiento = $numeroSeguimientoB;
-        if($i > 0){
-            $numeroConsecutivo = $i;
-            $numeroSeguimiento .= "-" . $numeroConsecutivo;
-        }        
-        if ($tiempo[$i] != '0' && $fechaLibre[$i] == NULL) {
-            $festivos = new Festivos();
-            //Agregar días de tiempo a hoy para fecha final
-            $fechaFinal = $festivos->contarDiasFestivos($hoy, $tiempo[$i]); //regresa un string
-        } elseif ($tiempo[$i] == '0' && $fechaLibre[$i] != NULL) {
-            $festivos = new Festivos();
-            //Agregar días de fechaLibre a hoy para fecha final
-            $fechaFinal = $festivos->contarDiasFestivos($hoy, $fechaLibre[$i]);
-        }
-        $historial =  $revision[$i] . ' ' . $tipo[$i] . ' $' . $precio[$i] . ' ' . $observacion[$i] . ' ' . $formateada . ' (' . $_SESSION['fa_nombre'] . ')';
-        $etiqueta = mysqli_query($conexion, "INSERT INTO fa_etiquetas(denominacion, marca, modelo, tipo, precio, revision,
-                                                        observaciones, tiempo, fechaLibre,fechaFinal,noSeguimiento, cliente, norma, asignado, estatus) 
+                                                '$historial','$tiempo[$i]','$fechaLibre[$i]','$fechaFinal','$seguimiento[$i]','$cliente','$norma','$asignado','$estatus', '$precioDocumento' )");
+        } elseif ($seguimiento[$i] == NULL) {
+            $numeroSeguimiento = $numeroSeguimientoB;
+            if ($i > 0) {
+                $numeroConsecutivo = $i;
+                $numeroSeguimiento .= "-" . $numeroConsecutivo;
+            }
+            if ($tiempo[$i] != '0' && $fechaLibre[$i] == NULL) {
+                $festivos = new Festivos();
+                //Agregar días de tiempo a hoy para fecha final
+                $fechaFinal = $festivos->contarDiasFestivos($hoy, $tiempo[$i]); //regresa un string
+                $historial = $cliente[$i] . ' ' . $norma[$i] . ' ' . $asignado[$i] . ' ' . $estatus[$i] . ' ' . $denominacion[$i] . ' ' . $marca[$i] . ' ' . $modelo[$i] . ' ' . $tipo[$i] . ' ' .  $revision[$i]
+                . ' Costo etiqueta: $' . $precio[$i] . ' Costo del documento: $' . $precioDocumento[$i] . ' ' . $tiempo[$i] .' '. $observacion[$i] . ' ' . $formateada . ' (' . $_SESSION['fa_nombre'] . ')';
+            } elseif ($tiempo[$i] == '0' && $fechaLibre[$i] != NULL) {
+                $festivos = new Festivos();
+                //Agregar días de fechaLibre a hoy para fecha final
+                $fechaFinal = $festivos->contarDiasFestivos($hoy, $fechaLibre[$i]);
+                $historial = $cliente[$i] . ' ' . $norma[$i] . ' ' . $asignado[$i] . ' ' . $estatus[$i] . ' ' . $denominacion[$i] . ' ' . $marca[$i] . ' ' . $modelo[$i] . ' ' . $tipo[$i] . ' ' .  $revision[$i]
+                . ' Costo etiqueta: $' . $precio[$i] . ' Costo del documento: $' . $precioDocumento[$i] . ' ' . $tiempo[$i] .' '. $observacion[$i] . ' ' . $formateada . ' (' . $_SESSION['fa_nombre'] . ')';
+            }
+            $etiqueta = mysqli_query($conexion, "INSERT INTO fa_etiquetas(denominacion, marca, modelo, tipo, precio, revision,
+                                                        observaciones, tiempo, fechaLibre,fechaFinal,noSeguimiento, cliente, norma, asignado, estatus, costoDoc) 
                                             VALUES('$denominacion[$i]','$marca[$i]','$modelo[$i]','$tipo[$i]','$precio[$i]','$revision[$i]',
-                                                    '$historial','$tiempo[$i]','$fechaLibre[$i]','$fechaFinal','$numeroSeguimiento','$cliente','$norma','$asignado','$estatus' )");
+                                                    '$historial','$tiempo[$i]','$fechaLibre[$i]','$fechaFinal','$numeroSeguimiento','$cliente','$norma','$asignado','$estatus', '$precioDocumento' )");
+        }
     }
-}
-if ($etiqueta) {
-    header('location: ../index.php');
+    if ($etiqueta) {
+        header('location: ../index.php');
+    } else {
+        echo 'Error al insertar';
+    }
 } else {
-    echo 'Error al insertar';
+    for ($i = 0; $i < count($tipo); $i++) {
+        $tiempo[$i] = 1;
+        $fechaLibre[$i] = NULL;
+        $historial = $cliente[$i] . ' ' . $norma[$i] . ' ' . $asignado[$i] . ' ' . $estatus[$i] . ' ' . $denominacion[$i] . ' ' . $marca[$i] . ' ' . $modelo[$i] . ' ' . $tipo[$i] . ' ' .  $revision[$i]
+                . ' Costo etiqueta: $' . $precio[$i] . ' Costo del documento: $' . $precioDocumento[$i] . ' ' . $tiempo[$i] .' '. $observacion[$i] . ' ' . $formateada . ' (' . $_SESSION['fa_nombre'] . ')';
+        if ($seguimiento[$i] != NULL) {
+            $etiqueta = mysqli_query($conexion, "INSERT INTO fa_etiquetas(denominacion, marca, modelo, tipo, precio, revision,
+                                                     observaciones, tiempo, fechaLibre,fechaFinal,noSeguimiento, cliente, norma, asignado, estatus, costoDoc) 
+                                        VALUES('$denominacion[$i]','$marca[$i]','$modelo[$i]','$tipo[$i]','$precio[$i]','$revision[$i]',
+                                                '$historial','$tiempo[$i]','$fechaLibre[$i]','$fechaFinal','$seguimiento[$i]','$cliente','$norma','$asignado','$estatus', '$precioDocumento' )");
+        } elseif ($seguimiento[$i] == NULL) {
+            $numeroSeguimiento = $numeroSeguimientoB;
+            if ($i > 0) {
+                $numeroConsecutivo = $i;
+                $numeroSeguimiento .= "-" . $numeroConsecutivo;
+            }
+            $etiqueta = mysqli_query($conexion, "INSERT INTO fa_etiquetas(denominacion, marca, modelo, tipo, precio, revision,
+                                                        observaciones, tiempo, fechaLibre,fechaFinal,noSeguimiento, cliente, norma, asignado, estatus, costoDoc) 
+                                            VALUES('$denominacion[$i]','$marca[$i]','$modelo[$i]','$tipo[$i]','$precio[$i]','$revision[$i]',
+                                                    '$historial','$tiempo[$i]','$fechaLibre[$i]','$fechaFinal','$numeroSeguimiento','$cliente','$norma','$asignado','$estatus', '$precioDocumento' )");
+        }
+    }
+    if ($etiqueta) {
+        header('location: ../index.php');
+    } else {
+        echo 'Error al insertar';
+    }
 }

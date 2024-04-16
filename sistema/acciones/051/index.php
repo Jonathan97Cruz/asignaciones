@@ -46,6 +46,7 @@ require_once '../../../conexion/conexion.php';
                         <th>Norma</th>
                         <th><i class="fa-sharp fa-solid fa-square-check"></i> Estatus</th>
                         <th><i class="fa-sharp fa-solid fa-square-check"></i> Asignado</th>
+                        <th><i class="fa-sharp fa-solid fa-calendar"></i> Fecha Límite</th>
                         <th><i class="fa-solid fa-location-arrow"></i> Acciones</th>
                     </thead>
                     <tbody id="contenido">

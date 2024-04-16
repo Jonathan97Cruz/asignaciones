@@ -25,6 +25,7 @@ boton.addEventListener("click", () => {
         <div class="col-3">
             <label for="tipo">Tipo de servicio</label>
             <select name="tipo[]" id="tipo" class="form-select">
+                <option value="En Revisión">En Revisión</option>
                 <option value="Constancia">Constancia</option>
                 <option value="Dictamen">Dictamen</option>
                 <option value="Diseño">Diseño</option>
@@ -34,14 +35,23 @@ boton.addEventListener("click", () => {
             <label for="precio">Costo</label>
             <input type="number" name="precio[]" id="precio" step="0.01" class="form-control" placeholder="0.0">
         </div>
+        <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+            <label for="precioDocumento">Costo del documento</label>
+            <input type="number" name="precioDocumento[]" id="precioDocumento" step="0.01" class="form-control" placeholder="0.0">
+        </div>
         <div class="col-3">
             <label for="revision">Revisión</label>
             <select name="revision[]" id="revision" class="form-select">
                 <option value="1ra Revisión">1ra Revisión </option>
-                <option value="2da Revisión">2ra Revisión</option>
+                <option value="2da Revisión">2da Revisión</option>
                 <option value="3ra Revisión">3ra Revisión</option>
                 <option value="4ta Revisión">4ta Revisión</option>
                 <option value="5ta Revisión">5ta Revisión</option>
+                <option value="6ta Revisión">6ta Revisión</option>
+                <option value="7ma Revisión">7ma Revisión</option>
+                <option value="8va Revisión">8va Revisión</option>
+                <option value="9na Revisión">9na Revisión</option>
+                <option value="10ma Revisión">10ma Revisión</option>
             </select>
         </div>
         <div class="col-3">

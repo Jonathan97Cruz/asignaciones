@@ -16,7 +16,7 @@ formulario.addEventListener("submit", function(e) {
           title: "Actualizado correctamente",
           confirmButtonText: "Aceptar",
           showConfirmButton: true,
-          timer: 2500,
+          timer: 3500,
         });
       } else {
         Swal.fire({
@@ -25,7 +25,7 @@ formulario.addEventListener("submit", function(e) {
           title: "Debe haber algún cambio o verifica que este todo correcto.",
           confirmButtonText: "Aceptar",
           showConfirmButton: true,
-          timer: 2500,
+          timer: 4000,
         });
       }
     });

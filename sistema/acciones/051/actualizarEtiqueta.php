@@ -58,8 +58,9 @@ $fechaLibre = (empty($_POST['fechaLibre'])) ? 0 : $_POST['fechaLibre'];
 $asignado2 = (empty($_POST['asignado2'])) ? 0 : $_POST['asignado2'];
 $estatus = (empty($_POST['estatus'])) ? NULL : $_POST['estatus'];
 $observaciones = (empty($_POST['observaciones'])) ? NULL : $_POST['observaciones']; //historial
+$precioDocumento = (empty($_POST['precioDocumento'])) ? 0 : $_POST['precioDocumento'];
 
-$consulta = mysqli_query($conexion, "SELECT * FROM fa_etiquetas WHERE id = $id");
+$consulta = mysqli_query($conexion, "SELECT * FROM fa_etiquetas WHERE id_etiquetas = $id");
 $resultado = mysqli_num_rows($consulta);
 if ($resultado > 0) {
     while ($a = mysqli_fetch_array($consulta)) {
@@ -73,101 +74,136 @@ if ($resultado > 0) {
         $revisionBD = $a['revision'];
         $asignadoBD = $a['asignado2'];
         $estatusBD = $a['estatus'];
+        $precioDocumentoBD = $a['costoDoc'];
     }
 }
+
 $hoyInicial = date('Y-m-d');
 //Obtenemos la fecha y la formateamos para agregarla a las observaciones.
 $hoy = new DateTime();
 $formateada = $hoy->format('d-m-Y H:i:s');
 $historial = "";
+if ($estatus != 'Terminar Proceso') {
+    if ($revision != $revisionBD) { //Revisamos si alguno de estos campos son diferentes de los datos de la BD
+        if ($tiempo != $tiempoBD && $fechaLibre != $fechaLBD) { //Revisamos que los tiempos sean diferentes que los de la BD
+            if ($tiempo != '0') { //Que sea diferente de 0
+                $festivos = new Festivos(); //Creamos un objeto para los días
+                $fechaFinal = $festivos->contarDiasFestivos($hoyInicial, $tiempo); //Llamamos la funcion y le pasamos los parametros
+                $historial = $estatus . ' ' . $denominacion . ' ' . $marca . ' ' . $modelo . ' ' . $tipo . ' ' .  $revision
+                    . ' Costo etiqueta: $' . $precio . ' Costo del documento: $' . $precioDocumento . ' Tiempo:' . $tiempo . 'Día(s) ' . $observacion . ' ' . $formateada . ' (' . $_SESSION['fa_nombre'] . ')\n' . $observaciones;
+                $observacion = null;
+                $query = mysqli_query($conexion, "UPDATE fa_etiquetas 
+                                    SET denominacion = '$denominacion', marca = '$marca', modelo = '$modelo', tipo = '$tipo', precio = '$precio', revision = '$revision', observacion = '$observacion',
+                                    tiempo = '$tiempo', fechaLibre = '$fechaLibre', fechaFinal = '$fechaFinal', asignado2 = '$asignado2', estatus = '$estatus', observaciones = '$historial'
+                                    WHERE id_etiquetas = $id  ");
+                if ($query) {
+                    $_SESSION['msg'] = 'Actualizado correctamente';
+                    echo json_encode('Correcto');
+                } else {
+                    $_SESSION['msg'] = 'Actualización erronea';
+                    echo json_encode('error');
+                }
+            } elseif ($fechaLibre != NULL) {
+                $festivos = new Festivos();
+                $fechaFinal = $festivos->contarDiasFestivos($hoyInicial, $fechaLibre);
+                $historial = $estatus . ' ' . $denominacion . ' ' . $marca . ' ' . $modelo . ' ' . $tipo . ' ' .  $revision
+                    . ' Costo etiqueta: $' . $precio . ' Costo del documento: $' . $precioDocumento . ' Tiempo:' . $fechaLibre . 'Día(s) ' . $observacion . ' ' . $formateada . ' (' . $_SESSION['fa_nombre'] . ') \n' . $observaciones;
+                $observacion = null;
+                $query = mysqli_query($conexion, "UPDATE fa_etiquetas 
+                                    SET denominacion = '$denominacion', marca = '$marca', modelo = '$modelo', tipo = '$tipo', precio = '$precio', revision = '$revision', observacion = '$observacion',
+                                    tiempo = '$tiempo', fechaLibre = '$fechaLibre', fechaFinal = '$fechaFinal', asignado2 = '$asignado2', estatus = '$estatus', observaciones = '$historial'
+                                    WHERE id_etiquetas = $id  ");
+                if ($query) {
+                    $_SESSION['msg'] = 'Actualizado correctamente';
+                    echo json_encode('Correcto');
+                } else {
+                    $_SESSION['msg'] = 'Actualización erronea';
+                    echo json_encode('error');
+                }
+            }
+        } elseif ($tiempo == $tiempoBD && $fechaLibre == $fechaLBD) {
+            if ($tiempo != '0') {
+                $festivos = new Festivos();
+                $fechaFinal = $festivos->contarDiasFestivos($hoyInicial, $tiempo);
+                $historial = $estatus . ' ' . $denominacion . ' ' . $marca . ' ' . $modelo . ' ' . $tipo . ' ' .  $revision
+                    . ' Costo etiqueta: $' . $precio . ' Costo del documento: $' . $precioDocumento . ' Tiempo:' . $tiempo . 'Día(s) ' . $observacion . ' ' . $formateada . ' (' . $_SESSION['fa_nombre'] . ')\n' . $observaciones;
+                $observacion = null;
+                $query = mysqli_query($conexion, "UPDATE fa_etiquetas 
+                                    SET denominacion = '$denominacion', marca = '$marca', modelo = '$modelo', tipo = '$tipo', precio = '$precio', revision = '$revision', observacion = '$observacion',
+                                    tiempo = '$tiempo', fechaLibre = '$fechaLibre', fechaFinal = '$fechaFinal', asignado2 = '$asignado2', estatus = '$estatus', observaciones = '$historial'
+                                    WHERE id_etiquetas = $id  ");
+                if ($query) {
+                    $_SESSION['msg'] = 'Actualizado correctamente';
+                    echo json_encode('Correcto');
+                } else {
+                    $_SESSION['msg'] = 'Actualización erronea';
+                    echo json_encode('error');
+                }
+            } elseif ($fechaLibre != NULL) {
+                $festivos = new Festivos();
+                $fechaFinal = $festivos->contarDiasFestivos($hoyInicial, $fechaLibre);
+                $historial = $estatus . ' ' . $denominacion . ' ' . $marca . ' ' . $modelo . ' ' . $tipo . ' ' .  $revision
+                    . ' Costo etiqueta: $' . $precio . ' Costo del documento: $' . $precioDocumento . ' Tiempo:' . $fechaLibre . 'Día(s) ' . $observacion . ' ' . $formateada . ' (' . $_SESSION['fa_nombre'] . ') \n' . $observaciones;
+                $observacion = null;
+                $query = mysqli_query($conexion, "UPDATE fa_etiquetas 
+                                    SET denominacion = '$denominacion', marca = '$marca', modelo = '$modelo', tipo = '$tipo', precio = '$precio', revision = '$revision', observacion = '$observacion',
+                                    tiempo = '$tiempo', fechaLibre = '$fechaLibre', fechaFinal = '$fechaFinal', asignado2 = '$asignado2', estatus = '$estatus', observaciones = '$historial'
+                                    WHERE id_etiquetas = $id  ");
+                if ($query) {
+                    $_SESSION['msg'] = 'Actualizado correctamente';
+                    echo json_encode('Correcto');
+                } else {
+                    $_SESSION['msg'] = 'Actualización erronea';
+                    echo json_encode('error');
+                }
+            } else {
+                $_SESSION['msg'] = 'Solo debes de ingresar el campo tiempo o tiempo opcional.';
+                echo json_encode('error');
+            }
+        }
+    } elseif ($denominacion != $denominacionBD || $marca != $marcaBD || $modelo != $modeloBD || $tipo != $tipoServicio || $precio != $costo || $precioDocumento != $precioDocumentoBD || $asignado2 != $asignadoBD || $estatus != $estatusBD || $observacion != NULL) {
+        if ($tiempo != 0) {
+            $historial = $estatus . ' ' . $denominacion . ' ' . $marca . ' ' . $modelo . ' ' . $tipo . ' ' .  $revision
+                . ' Costo etiqueta: $' . $precio . ' Costo del documento: $' . $precioDocumento . ' Tiempo:' . $tiempo . 'Día(s) ' . $observacion . ' ' . $formateada . ' (' . $_SESSION['fa_nombre'] . ')\n' . $observaciones;
+        } elseif ($fechaLibre != NULL) {
+            $historial = $estatus . ' ' . $denominacion . ' ' . $marca . ' ' . $modelo . ' ' . $tipo . ' ' .  $revision
+                . ' Costo etiqueta: $' . $precio . ' Costo del documento: $' . $precioDocumento . ' Tiempo:' . $fechaLibre . 'Día(s) ' . $observacion . ' ' . $formateada . ' (' . $_SESSION['fa_nombre'] . ')\n' . $observaciones;
+        }
 
-if ($revision != $revisionBD) { //Revisamos si alguno de estos campos son diferentes de los datos de la BD
-    if ($tiempo != $tiempoBD && $fechaLibre != $fechaLBD) { //Revisamos que los tiempos sean diferentes que los de la BD
-        if ($tiempo != '0') { //Que sea diferente de 0
-            $festivos = new Festivos(); //Creamos un objeto para los días
-            $fechaFinal = $festivos->contarDiasFestivos($hoyInicial, $tiempo); //Llamamos la funcion y le pasamos los parametros
-            $historial =  $revision . ' ' . $tipo . ' $' . $precio . ' ' . $observacion . ' ' . $formateada . ' (' . $_SESSION['fa_nombre'] . ') \n' . $observaciones; //Concatenamos los cambios
-            $observacion = null;
-            $query = mysqli_query($conexion, "UPDATE fa_etiquetas 
-                                    SET denominacion = '$denominacion', marca = '$marca', modelo = '$modelo', tipo = '$tipo', precio = '$precio', revision = '$revision', observacion = '$observacion',
-                                    tiempo = '$tiempo', fechaLibre = '$fechaLibre', fechaFinal = '$fechaFinal', asignado2 = '$asignado2', estatus = '$estatus', observaciones = '$historial'
-                                    WHERE id = $id  ");
-            if ($query) {
-                $_SESSION['msg'] = 'Actualizado correctamente';
-                echo json_encode('Correcto');
-            } else {
-                $_SESSION['msg'] = 'Actualización erronea';
-                echo json_encode('error');
-            }
-        } elseif ($fechaLibre != NULL) {
-            $festivos = new Festivos();
-            $fechaFinal = $festivos->contarDiasFestivos($hoyInicial, $fechaLibre);
-            $historial =  $revision . ' ' . $tipo . ' $' . $precio . ' ' . $observacion . ' ' . $formateada . ' (' . $_SESSION['fa_nombre'] . ') \n' . $observaciones;
-            $observacion = null;
-            $query = mysqli_query($conexion, "UPDATE fa_etiquetas 
-                                    SET denominacion = '$denominacion', marca = '$marca', modelo = '$modelo', tipo = '$tipo', precio = '$precio', revision = '$revision', observacion = '$observacion',
-                                    tiempo = '$tiempo', fechaLibre = '$fechaLibre', fechaFinal = '$fechaFinal', asignado2 = '$asignado2', estatus = '$estatus', observaciones = '$historial'
-                                    WHERE id = $id  ");
-            if ($query) {
-                $_SESSION['msg'] = 'Actualizado correctamente';
-                echo json_encode('Correcto');
-            } else {
-                $_SESSION['msg'] = 'Actualización erronea';
-                echo json_encode('error');
-            }
-        }
-    } elseif ($tiempo == $tiempoBD && $fechaLibre == $fechaLBD) {
-        if ($tiempo != '0') {
-            $festivos = new Festivos();
-            $fechaFinal = $festivos->contarDiasFestivos($hoyInicial, $tiempo);
-            $historial =  $revision . ' ' . $tipo . ' $' . $precio . ' ' . $observacion . ' ' . $formateada . ' (' . $_SESSION['fa_nombre'] . ') \n' . $observaciones; //Concatenamos los cambios
-            $observacion = null;
-            $query = mysqli_query($conexion, "UPDATE fa_etiquetas 
-                                    SET denominacion = '$denominacion', marca = '$marca', modelo = '$modelo', tipo = '$tipo', precio = '$precio', revision = '$revision', observacion = '$observacion',
-                                    tiempo = '$tiempo', fechaLibre = '$fechaLibre', fechaFinal = '$fechaFinal', asignado2 = '$asignado2', estatus = '$estatus', observaciones = '$historial'
-                                    WHERE id = $id  ");
-            if ($query) {
-                $_SESSION['msg'] = 'Actualizado correctamente';
-                echo json_encode('Correcto');
-            } else {
-                $_SESSION['msg'] = 'Actualización erronea';
-                echo json_encode('error');
-            }
-        } elseif ($fechaLibre != NULL) {
-            $festivos = new Festivos();
-            $fechaFinal = $festivos->contarDiasFestivos($hoyInicial, $fechaLibre);
-            $historial =  $revision . ' ' . $tipo . ' $' . $precio . ' ' . $observacion . ' ' . $formateada . ' (' . $_SESSION['fa_nombre'] . ') \n' . $observaciones;
-            $observacion = null;
-            $query = mysqli_query($conexion, "UPDATE fa_etiquetas 
-                                    SET denominacion = '$denominacion', marca = '$marca', modelo = '$modelo', tipo = '$tipo', precio = '$precio', revision = '$revision', observacion = '$observacion',
-                                    tiempo = '$tiempo', fechaLibre = '$fechaLibre', fechaFinal = '$fechaFinal', asignado2 = '$asignado2', estatus = '$estatus', observaciones = '$historial'
-                                    WHERE id = $id  ");
-            if ($query) {
-                $_SESSION['msg'] = 'Actualizado correctamente';
-                echo json_encode('Correcto');
-            } else {
-                $_SESSION['msg'] = 'Actualización erronea';
-                echo json_encode('error');
-            }
-        } else {
-            $_SESSION['msg'] = 'Solo debes de ingresar el campo tiempo o tiempo opcional.';
-            echo json_encode('error');
-        }
-    }
-} elseif ($denominacion != $denominacionBD || $marca != $marcaBD || $modelo != $modeloBD || $tipo != $tipoServicio || $precio != $costo || $asignado2 != $asignadoBD || $estatus != $estatusBD) {
-    $historial =  $revision . ' ' . $tipo . ' $' . $precio . ' ' . $observacion . ' ' . $formateada . ' (' . $_SESSION['fa_nombre'] . ') \n' . $observaciones;
-    $observacion = null;
-    $query = mysqli_query($conexion, "UPDATE fa_etiquetas 
+        $observacion = null;
+        $query = mysqli_query($conexion, "UPDATE fa_etiquetas 
                             SET denominacion = '$denominacion', marca = '$marca', modelo = '$modelo', tipo = '$tipo', precio = '$precio', revision = '$revision', observacion = '$observacion',
                             tiempo = '$tiempo', fechaLibre = '$fechaLibre', asignado2 = '$asignado2', estatus = '$estatus', observaciones = '$historial'
-                            WHERE id = $id  ");
+                            WHERE id_etiquetas = $id  ");
+        if ($query) {
+            $_SESSION['msg'] = 'Actualizado correctamente.';
+            echo json_encode('Correcto');
+        } else {
+            $_SESSION['msg'] = 'Actualización erronea.';
+            echo json_encode('error');
+        }
+    } else {
+        echo json_encode('error');
+    }
+} else {
+    if ($tiempo != 0) {
+        $historial = $estatus . ' ' . $denominacion . ' ' . $marca . ' ' . $modelo . ' ' . $tipo . ' ' .  $revision
+            . ' Costo etiqueta: $' . $precio . ' Costo del documento: $' . $precioDocumento . ' Tiempo:' . $tiempo . 'Día(s) ' . $observacion . ' ' . $formateada . ' (' . $_SESSION['fa_nombre'] . ')\n' . $observaciones;
+    } elseif ($fechaLibre != NULL) {
+        $historial = $estatus . ' ' . $denominacion . ' ' . $marca . ' ' . $modelo . ' ' . $tipo . ' ' .  $revision
+            . ' Costo etiqueta: $' . $precio . ' Costo del documento: $' . $precioDocumento . ' Tiempo:' . $fechaLibre . 'Día(s) ' . $observacion . ' ' . $formateada . ' (' . $_SESSION['fa_nombre'] . ')\n' . $observaciones;
+    }
+
+    $observacion = null;
+    $query = mysqli_query($conexion, "UPDATE fa_etiquetas 
+                        SET denominacion = '$denominacion', marca = '$marca', modelo = '$modelo', tipo = '$tipo', precio = '$precio', revision = '$revision', observacion = '$observacion',
+                        tiempo = '$tiempo', fechaLibre = '$fechaLibre', asignado2 = '$asignado2', estatus = '$estatus', observaciones = '$historial'
+                        WHERE id_etiquetas = $id  ");
     if ($query) {
         $_SESSION['msg'] = 'Actualizado correctamente.';
-        echo json_encode('Correcto');
+        echo json_encode('proceso');
     } else {
         $_SESSION['msg'] = 'Actualización erronea.';
         echo json_encode('error');
     }
-} else {
-    echo json_encode('error');
 }

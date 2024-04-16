@@ -9,7 +9,7 @@ if ($_SESSION['active'] != true) {
 }
 require_once '../../../conexion/conexion.php';
 $idEtiqueta = $_POST['idEtiqueta'];
-$consulta = mysqli_query($conexion, "SELECT * FROM fa_etiquetas INNER JOIN fa_usuarios ON id_usuario = asignado  WHERE id = $idEtiqueta ");
+$consulta = mysqli_query($conexion, "SELECT * FROM fa_etiquetas INNER JOIN fa_usuarios ON id_usuario = asignado  WHERE id_etiquetas = $idEtiqueta ");
 $resultado = mysqli_num_rows($consulta);
 ?>
 <!DOCTYPE html>
@@ -32,12 +32,12 @@ $resultado = mysqli_num_rows($consulta);
         <div class="row">
             <form id="etiquetaU">
                 <div class="form-group row">
-                    <h2 class="titulo2">Editar etiqueta</h2>
+                    <h2 class="titulo2">Registro de etiqueta</h2>
                     <hr />
                     <?php
                     if ($resultado > 0) {
                         while ($b = mysqli_fetch_array($consulta)) {
-                            $id = $b['id'];
+                            $id = $b['id_etiquetas'];
                             $cliente = $b['cliente'];
                             $norma = $b['norma'];
                             $asignado = $b['asignado'];
@@ -58,6 +58,7 @@ $resultado = mysqli_num_rows($consulta);
                             $fechaFinal = $b['fechaFinal'];
                             $asignado2 = $b['asignado2'];
                             $observaciones = $b['observaciones'];
+                            $precioDocumento = $b['costoDoc'];
                         }
                     }
                     $recepcion = new DateTime($fechaRecepcion);
@@ -128,12 +129,13 @@ $resultado = mysqli_num_rows($consulta);
                         <label for="estatus">Estatus</label>
                         <select name="estatus" id="estatus" class="form-select">
                             <option value="<?php echo $estatus ?>"><?php echo $estatus ?></option>
+                            <option value="Pendiente">Pendiente</option>
                             <option value="En Revisión">En Revisión</option>
                             <option value="Check Segundo Insp">Check Segundo Insp</option>
                             <option value="Correcciones Cliente">Correcciones Cliente</option>
                             <option value="Check Tercer Insp">Check Tercer Insp</option>
                             <option value="Constancia en Aprobación">Constancia en Aprobación</option>
-                            <option value="Facturar">Facturar</option>
+                            <option value="Terminar Proceso">Terminar Proceso</option>
                         </select>
                     </div>
                     <div class="col-12">
@@ -155,6 +157,7 @@ $resultado = mysqli_num_rows($consulta);
                         <label for="tipo">Tipo de servicio</label>
                         <select name="tipo" id="tipo" class="form-select">
                             <option value="<?php echo $tipo ?>"><?php echo $tipo ?></option>
+                            <option value="En Revisión">En Revisión</option>
                             <option value="Constancia">Constancia</option>
                             <option value="Dictamen">Dictamen</option>
                             <option value="Diseño">Diseño</option>
@@ -165,6 +168,10 @@ $resultado = mysqli_num_rows($consulta);
                         <input type="number" name="precio" id="precio" step="0.01" class="form-control" value="<?php echo $precio ?>">
                     </div>
                     <div class="col-3">
+                        <label for="precioDocumento">Costo del documento</label>
+                        <input type="number" name="precioDocumento" id="precioDocumento" step="0.01" class="form-control" value="<?php echo $precioDocumento ?>">
+                    </div>
+                    <div class="col-3">
                         <label for="revision">Revisión</label>
                         <select name="revision" id="revision" class="form-select">
                             <option value="<?php echo $revision ?>"><?php echo $revision ?></option>
@@ -173,6 +180,11 @@ $resultado = mysqli_num_rows($consulta);
                             <option value="3ra Revisión">3ra Revisión</option>
                             <option value="4ta Revisión">4ta Revisión</option>
                             <option value="5ta Revisión">5ta Revisión</option>
+                            <option value="6ta Revisión">6ta Revisión</option>
+                            <option value="7ma Revisión">7ma Revisión</option>
+                            <option value="8va Revisión">8va Revisión</option>
+                            <option value="9na Revisión">9na Revisión</option>
+                            <option value="10ma Revisión">10ma Revisión</option>
                         </select>
                     </div>
                     <div class="col-3">
@@ -213,15 +225,15 @@ $resultado = mysqli_num_rows($consulta);
                         $cambiar = new DateTime($hoy);
                         $compara = $cambiar->format('d-m-Y');
                         $formatear1 = $recepcion->format('d-m-Y');
-                        if ($compara >= $formatearFinal) {
+                        if ($formatearFinal >= $compara) {
                         ?>
-                            <input type="text" name="fechaFinal" id="fechaFinal" class="form-control" value="<?php echo $formatearFinal ?>" readonly style="background: red; color:azure">
+                            <input type="text" name="fechaFinal" id="fechaFinal" class="form-control" value="<?= $formatearFinal  ?>" readonly style="background: red; color:azure">
                         <?php
-                        } elseif ($compara < $formatearFinal) {
+                        } elseif ($formatearFinal < $compara) {
                         ?>
                             <input type="text" name="fechaFinal" id="fechaFinal" class="form-control" value="<?= $formatearFinal ?>" readonly style="background: yellow; color:black ">
                         <?php
-                        } elseif($compara == $formatear1) {
+                        } elseif($formatear1 == $compara) {
                         ?>
                             <input type="text" name="fechaFinal" id="fechaFinal" class="form-control" value="<?php echo $formatearFinal ?>" readonly style="background: green;">
                         <?php
@@ -229,19 +241,16 @@ $resultado = mysqli_num_rows($consulta);
 
                         ?>
                     </div>
-                    <div class="col-6">
+                    <div class="col-12">
                         <label for="observaciones">Historial</label>
-                        <textarea class="form-control" name="observaciones" id="observaciones" rows="1" readonly><?php echo $observaciones; ?></textarea>
+                        <textarea class="form-control" name="observaciones" id="observaciones" rows="4" readonly><?php echo $observaciones; ?></textarea>
                         <input type="hidden" name="idEtiqueta" value="<?php echo $idEtiqueta ?>">
                     </div>
                     <br />
                     <hr />
-                    <section class="col-12" id="etiquetaNueva">
-
-                    </section>
                     <div class="col-12" style="padding-top: 10px;">
                         <a href="index.php" class="btn btn-danger">Regresar</a>
-                        <button type="submit" class="btn btn-success">Editar etiqueta</button>
+                        <button type="submit" class="btn btn-success">Guardar etiqueta</button>
                     </div>
                 </div>
             </form>
