@@ -24,7 +24,28 @@ require_once '../../../conexion/conexion.php';
 
     <div class="container">
         <div class="row">
-            <div class="form-group row">
+            <div class="form-group row" style="padding-bottom: 15px; padding-top:15px">
+                <?php
+                if ($_SESSION['fa_rol'] == 1 || $_SESSION['fa_rol'] == 2) {
+                ?>
+                    <div class="col-4">
+                        <div class="card disenoC">
+                            <a href="../excel/general051.php" class="btn ancla1">
+                                <h5 class="card-title"><i class="fa-solid fa-file-excel"></i> Reporte General</h5>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        
+                    </div>
+                    <div class="col-4">
+
+                    </div>
+                <?php
+                }
+                ?>
+
+
                 <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6" style="padding-bottom: 15px; padding-top:15px">
                     <form action="" method="post">
                         <h3 for="campo" class="etiqueta"><i class="fa-solid fa-magnifying-glass"></i> Busqueda </h3>
@@ -38,7 +59,7 @@ require_once '../../../conexion/conexion.php';
             </div>
             <div class="table-responsive">
                 <table class="table table-bordered tanble-hover">
-                    <h2 class="titulo2">Listado 051</h2>
+                    <h2 class="titulo2">Listado Etiquetas</h2>
                     <thead class="table-primary pegajoso">
                         <th>No</th>
                         <th>No consecutivo</th>
@@ -63,4 +84,5 @@ require_once '../../../conexion/conexion.php';
 <script src="https://kit.fontawesome.com/7f41046fc7.js" crossorigin="anonymous"></script><!--Cuenta de sistemas2-->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="js/busqueda.js"></script>
+
 </html>

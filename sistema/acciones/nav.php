@@ -36,6 +36,14 @@
                                 </li>
                             </ul>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link active dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-regular fa-hand-pointer"></i> Etiquetas</a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="051/index.php" class="dropdown-item" aria-current="page"><i class="fa-solid fa-user-check"></i> Revisión de etiquetas</a>
+                                </li>
+                            </ul>
+                        </li>
                         <li class="nav-item">
                             <a href="../usuarios/agregarUsuario.php" class="nav-link active" aria-current="page"><i class="fa-solid fa-users"></i> Inspectores</a>
                         </li>

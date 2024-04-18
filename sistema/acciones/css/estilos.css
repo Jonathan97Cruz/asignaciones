@@ -20,6 +20,16 @@ h5{
     text-align: center;
     width: 100%;
 }
+.ancla1{
+    text-align: center;
+    width: 100%;
+    background: rgb(47, 255, 95);
+}
+.ancla1:hover{
+    background: rgb(47, 255, 255);
+    color: black;
+    border: white;
+}
 
 p{
     text-align: center;

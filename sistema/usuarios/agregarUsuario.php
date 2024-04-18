@@ -58,6 +58,14 @@ if ($_SESSION['active'] != true) {
                                 </li>
                             </ul>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link active dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-regular fa-hand-pointer"></i> Etiquetas</a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="../acciones/051/index.php" class="dropdown-item" aria-current="page"><i class="fa-solid fa-user-check"></i> Revisión de etiquetas</a>
+                                </li>
+                            </ul>
+                        </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link active" aria-current="page"><i class="fa-solid fa-users"></i> Inspectores</a>
                         </li>
@@ -85,17 +93,17 @@ if ($_SESSION['active'] != true) {
                     <h4 class="titulo" for="campo"><i class="fa-solid fa-magnifying-glass"></i>Busqueda</h4>
                     <input type="text" name="campo" id="campo" class="form-control" placeholder="Ingresa algun dato a buscar">
                 </form>
-                <button type="button" data-bs-target="#addUsuario" data-bs-toggle="modal" class="btn btn-success agregar" ><i class="fas fa-plus-circle"></i> Agregar nuevo usuario</button>
+                <button type="button" data-bs-target="#addUsuario" data-bs-toggle="modal" class="btn btn-success agregar"><i class="fas fa-plus-circle"></i> Agregar nuevo usuario</button>
                 <?php
-                if(isset($_SESSION['msg'])){
+                if (isset($_SESSION['msg'])) {
                 ?>
                     <div class="alert alert-info alert-dismissible fade show" role="alert">
                         <?= $_SESSION['msg']; ?>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
-                    
-                <?php    
-                unset($_SESSION['msg']);
+
+                <?php
+                    unset($_SESSION['msg']);
                 }
                 ?>
 

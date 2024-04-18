@@ -44,7 +44,9 @@ class Festivos
 }
 
 $id = $_POST['idEtiqueta'];
-
+$cliente = (empty($_POST['cliente'])) ? NULL : $_POST['cliente'];
+$norma = (empty($_POST['norma'])) ? NULL : $_POST['norma'];
+$asignado = (empty($_POST['asignado'])) ? NULL : $_POST['asignado'];
 //tabla etiquetas
 $denominacion = (empty($_POST['denominacion'])) ? NULL : $_POST['denominacion'];
 $marca = (empty($_POST['marca'])) ? NULL : $_POST['marca'];
@@ -72,12 +74,14 @@ if ($resultado > 0) {
         $tipoServicio = $a['tipo'];
         $costo = $a['precio'];
         $revisionBD = $a['revision'];
-        $asignadoBD = $a['asignado2'];
+        $asignadoBD2 = $a['asignado2'];
         $estatusBD = $a['estatus'];
         $precioDocumentoBD = $a['costoDoc'];
+        $clienteBD = $a['cliente'];
+        $normaBD = $a['norma'];
+        $asignadoBD = $a['asignado'];
     }
 }
-
 $hoyInicial = date('Y-m-d');
 //Obtenemos la fecha y la formateamos para agregarla a las observaciones.
 $hoy = new DateTime();
@@ -94,8 +98,8 @@ if ($estatus != 'Terminar Proceso') {
                 $observacion = null;
                 $query = mysqli_query($conexion, "UPDATE fa_etiquetas 
                                     SET denominacion = '$denominacion', marca = '$marca', modelo = '$modelo', tipo = '$tipo', precio = '$precio', revision = '$revision', observacion = '$observacion',
-                                    tiempo = '$tiempo', fechaLibre = '$fechaLibre', fechaFinal = '$fechaFinal', asignado2 = '$asignado2', estatus = '$estatus', observaciones = '$historial'
-                                    WHERE id_etiquetas = $id  ");
+                                    tiempo = '$tiempo', fechaLibre = '$fechaLibre', fechaFinal = '$fechaFinal', asignado2 = '$asignado2', estatus = '$estatus', observaciones = '$historial', cliente = '$cliente', norma = '$norma',
+                                    asignado = '$asignado' WHERE id_etiquetas = $id  ");
                 if ($query) {
                     $_SESSION['msg'] = 'Actualizado correctamente';
                     echo json_encode('Correcto');
@@ -111,8 +115,8 @@ if ($estatus != 'Terminar Proceso') {
                 $observacion = null;
                 $query = mysqli_query($conexion, "UPDATE fa_etiquetas 
                                     SET denominacion = '$denominacion', marca = '$marca', modelo = '$modelo', tipo = '$tipo', precio = '$precio', revision = '$revision', observacion = '$observacion',
-                                    tiempo = '$tiempo', fechaLibre = '$fechaLibre', fechaFinal = '$fechaFinal', asignado2 = '$asignado2', estatus = '$estatus', observaciones = '$historial'
-                                    WHERE id_etiquetas = $id  ");
+                                    tiempo = '$tiempo', fechaLibre = '$fechaLibre', fechaFinal = '$fechaFinal', asignado2 = '$asignado2', estatus = '$estatus', observaciones = '$historial', cliente = '$cliente', norma = '$norma',
+                                    asignado = '$asignado' WHERE id_etiquetas = $id  ");
                 if ($query) {
                     $_SESSION['msg'] = 'Actualizado correctamente';
                     echo json_encode('Correcto');
@@ -130,8 +134,8 @@ if ($estatus != 'Terminar Proceso') {
                 $observacion = null;
                 $query = mysqli_query($conexion, "UPDATE fa_etiquetas 
                                     SET denominacion = '$denominacion', marca = '$marca', modelo = '$modelo', tipo = '$tipo', precio = '$precio', revision = '$revision', observacion = '$observacion',
-                                    tiempo = '$tiempo', fechaLibre = '$fechaLibre', fechaFinal = '$fechaFinal', asignado2 = '$asignado2', estatus = '$estatus', observaciones = '$historial'
-                                    WHERE id_etiquetas = $id  ");
+                                    tiempo = '$tiempo', fechaLibre = '$fechaLibre', fechaFinal = '$fechaFinal', asignado2 = '$asignado2', estatus = '$estatus', observaciones = '$historial', cliente = '$cliente', norma = '$norma',
+                                    asignado = '$asignado' WHERE id_etiquetas = $id  ");
                 if ($query) {
                     $_SESSION['msg'] = 'Actualizado correctamente';
                     echo json_encode('Correcto');
@@ -147,8 +151,8 @@ if ($estatus != 'Terminar Proceso') {
                 $observacion = null;
                 $query = mysqli_query($conexion, "UPDATE fa_etiquetas 
                                     SET denominacion = '$denominacion', marca = '$marca', modelo = '$modelo', tipo = '$tipo', precio = '$precio', revision = '$revision', observacion = '$observacion',
-                                    tiempo = '$tiempo', fechaLibre = '$fechaLibre', fechaFinal = '$fechaFinal', asignado2 = '$asignado2', estatus = '$estatus', observaciones = '$historial'
-                                    WHERE id_etiquetas = $id  ");
+                                    tiempo = '$tiempo', fechaLibre = '$fechaLibre', fechaFinal = '$fechaFinal', asignado2 = '$asignado2', estatus = '$estatus', observaciones = '$historial', cliente = '$cliente', norma = '$norma',
+                                    asignado = '$asignado' WHERE id_etiquetas = $id  ");
                 if ($query) {
                     $_SESSION['msg'] = 'Actualizado correctamente';
                     echo json_encode('Correcto');
@@ -161,7 +165,10 @@ if ($estatus != 'Terminar Proceso') {
                 echo json_encode('error');
             }
         }
-    } elseif ($denominacion != $denominacionBD || $marca != $marcaBD || $modelo != $modeloBD || $tipo != $tipoServicio || $precio != $costo || $precioDocumento != $precioDocumentoBD || $asignado2 != $asignadoBD || $estatus != $estatusBD || $observacion != NULL) {
+    } elseif (
+        $denominacion != $denominacionBD || $marca != $marcaBD || $modelo != $modeloBD || $tipo != $tipoServicio || $precio != $costo || $precioDocumento != $precioDocumentoBD
+        || $asignado2 != $asignadoBD2 || $estatus != $estatusBD || $observacion != NULL || $asignado != $asignadoBD || $cliente != $clienteBD || $norma != $normaBD
+    ) {
         if ($tiempo != 0) {
             $historial = $estatus . ' ' . $denominacion . ' ' . $marca . ' ' . $modelo . ' ' . $tipo . ' ' .  $revision
                 . ' Costo etiqueta: $' . $precio . ' Costo del documento: $' . $precioDocumento . ' Tiempo:' . $tiempo . 'Día(s) ' . $observacion . ' ' . $formateada . ' (' . $_SESSION['fa_nombre'] . ')\n' . $observaciones;
@@ -173,8 +180,8 @@ if ($estatus != 'Terminar Proceso') {
         $observacion = null;
         $query = mysqli_query($conexion, "UPDATE fa_etiquetas 
                             SET denominacion = '$denominacion', marca = '$marca', modelo = '$modelo', tipo = '$tipo', precio = '$precio', revision = '$revision', observacion = '$observacion',
-                            tiempo = '$tiempo', fechaLibre = '$fechaLibre', asignado2 = '$asignado2', estatus = '$estatus', observaciones = '$historial'
-                            WHERE id_etiquetas = $id  ");
+                            tiempo = '$tiempo', fechaLibre = '$fechaLibre', asignado2 = '$asignado2', estatus = '$estatus', observaciones = '$historial', cliente = '$cliente', norma = '$norma',
+                            asignado = '$asignado' WHERE id_etiquetas = $id  ");
         if ($query) {
             $_SESSION['msg'] = 'Actualizado correctamente.';
             echo json_encode('Correcto');
@@ -197,8 +204,8 @@ if ($estatus != 'Terminar Proceso') {
     $observacion = null;
     $query = mysqli_query($conexion, "UPDATE fa_etiquetas 
                         SET denominacion = '$denominacion', marca = '$marca', modelo = '$modelo', tipo = '$tipo', precio = '$precio', revision = '$revision', observacion = '$observacion',
-                        tiempo = '$tiempo', fechaLibre = '$fechaLibre', asignado2 = '$asignado2', estatus = '$estatus', observaciones = '$historial'
-                        WHERE id_etiquetas = $id  ");
+                        tiempo = '$tiempo', fechaLibre = '$fechaLibre', asignado2 = '$asignado2', estatus = '$estatus', observaciones = '$historial', cliente = '$cliente', norma = '$norma',
+                        asignado = '$asignado' WHERE id_etiquetas = $id  ");
     if ($query) {
         $_SESSION['msg'] = 'Actualizado correctamente.';
         echo json_encode('proceso');

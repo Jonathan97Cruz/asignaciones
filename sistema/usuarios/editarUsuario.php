@@ -32,6 +32,9 @@
                                 <select name="roll" id="roll" class="form-select">
                                     <option value="3">Inspector</option>
                                     <option value="4">Folios</option>
+                                    <option value="5">051</option>
+                                    <option value="6">Representante Comercial</option>
+                                    <option value="7">Facturación</option>
                                     <option value="2">Administrador</option>
                                 </select>
                             </div>
@@ -47,4 +50,3 @@
     </div>
 </div>
 <script src="../../js/jquery-2.2.4.min.js" type="text/javascript"></script>
-

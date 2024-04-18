@@ -57,6 +57,30 @@ if ($num_rows > 0) {
                             <a href="#" class="btn btn-warning boton" data-bs-toggle="modal" data-bs-target="#editaModal" data-bs-id=' . $row['id_usuario'] . '><i class="fa-solid fa-pencil"></i> Editar</a>
                             <a href="#" id="btnEnvia" class="btn btn-danger botonE" data-bs-toggle="modal" data-bs-target="#eliminarModal" data-bs-id=' . $row['id_usuario'] . '><i class="fa-solid fa-user-slash"></i> Eliminar</a>
                       </td>';
+        } elseif ($row['fa_rol'] == 5) {
+            $html .= '<td>' . $row['fa_nombre'] . ' ' . $row['fa_apellido'] . '</td>';
+            $html .= '<td>Etiquetas</td>';
+            $html .= '<td>' . $row['fa_user'] . '</td>';
+            $html .= '<td>
+                            <a href="#" class="btn btn-warning boton" data-bs-toggle="modal" data-bs-target="#editaModal" data-bs-id=' . $row['id_usuario'] . '><i class="fa-solid fa-pencil"></i> Editar</a>
+                            <a href="#" id="btnEnvia" class="btn btn-danger botonE" data-bs-toggle="modal" data-bs-target="#eliminarModal" data-bs-id=' . $row['id_usuario'] . '><i class="fa-solid fa-user-slash"></i> Eliminar</a>
+                      </td>';
+        } elseif ($row['fa_rol'] == 6) {
+            $html .= '<td>' . $row['fa_nombre'] . ' ' . $row['fa_apellido'] . '</td>';
+            $html .= '<td>Representante Comercial</td>';
+            $html .= '<td>' . $row['fa_user'] . '</td>';
+            $html .= '<td>
+                            <a href="#" class="btn btn-warning boton" data-bs-toggle="modal" data-bs-target="#editaModal" data-bs-id=' . $row['id_usuario'] . '><i class="fa-solid fa-pencil"></i> Editar</a>
+                            <a href="#" id="btnEnvia" class="btn btn-danger botonE" data-bs-toggle="modal" data-bs-target="#eliminarModal" data-bs-id=' . $row['id_usuario'] . '><i class="fa-solid fa-user-slash"></i> Eliminar</a>
+                      </td>';
+        } elseif ($row['fa_rol'] == 7) {
+            $html .= '<td>' . $row['fa_nombre'] . ' ' . $row['fa_apellido'] . '</td>';
+            $html .= '<td>Facturación</td>';
+            $html .= '<td>' . $row['fa_user'] . '</td>';
+            $html .= '<td>
+                            <a href="#" class="btn btn-warning boton" data-bs-toggle="modal" data-bs-target="#editaModal" data-bs-id=' . $row['id_usuario'] . '><i class="fa-solid fa-pencil"></i> Editar</a>
+                            <a href="#" id="btnEnvia" class="btn btn-danger botonE" data-bs-toggle="modal" data-bs-target="#eliminarModal" data-bs-id=' . $row['id_usuario'] . '><i class="fa-solid fa-user-slash"></i> Eliminar</a>
+                      </td>';
         }
         $html .= '</tr>';
     }

@@ -25,9 +25,9 @@ if($resultado > 0){
         $_SESSION['fa_nombre'] = $a['fa_nombre'];
         $_SESSION['fa_apellido'] = $a['fa_apellido'];
         $_SESSION['fa_rol'] = $a['fa_rol'];
-        if($_SESSION['fa_rol'] != 3 && $_SESSION['fa_rol'] != 5){
+        if($_SESSION['fa_rol'] != 3 && $_SESSION['fa_rol'] != 5 && $_SESSION['fa_rol'] != 6 && $_SESSION['fa_rol'] != 7){
             header('location:../sistema/acciones/listaFolios.php');  
-        }elseif($_SESSION['fa_rol'] == 3 || $_SESSION['fa_rol'] == 5){
+        }elseif($_SESSION['fa_rol'] == 3 || $_SESSION['fa_rol'] == 5 || $_SESSION['fa_rol'] == 6 || $_SESSION['fa_rol'] == 7){
             header('location:../sistema/acciones/inspectores/asignaciones.php');
         }else{
             $_SESSION['msg'] = '<p style="color: red;">¡Error en el usuario o contraseña!</p>';

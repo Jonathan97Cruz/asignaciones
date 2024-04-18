@@ -59,6 +59,8 @@ if ($num_rows > 0) {
             $html .= '<td style="background:yellow; color: black">' . $formateada . '</td>';
         } elseif ($fechaRecepcion == $hoy) {
             $html .= '<td style="background:green; color: black">' . $formateada . '</td>';
+        } elseif($hoy >= $fechaFinal){
+            $html .= '<td style="background:red; color: black">' . $formateada . '</td>';
         } else {
             $html .= '<td style="background:gray; color: black">' . $formateada . '</td>';
         }
