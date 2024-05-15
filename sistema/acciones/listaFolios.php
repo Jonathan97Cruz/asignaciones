@@ -21,9 +21,9 @@ require_once '../../conexion/conexion.php';
 </head>
 
 <body>
-   <?php
-   include 'nav.php';
-   ?>
+    <?php
+    include 'nav.php';
+    ?>
     <div class="container">
         <div class="row">
             <div class="table-responsive col-sm-12 col-md-12 col-lg-12 col-xl-12" style="padding-top: 10px;">
@@ -45,7 +45,7 @@ require_once '../../conexion/conexion.php';
                     </thead>
                     <tbody>
                         <?php
-                        $consulta = mysqli_query($conexion, "SELECT * FROM fa_asignaciones ORDER BY cliente ASC");
+                        $consulta = mysqli_query($conexion, "SELECT * FROM fa_asignaciones WHERE estatus_a != 2 ORDER BY cliente ASC");
                         $resultado = mysqli_num_rows($consulta);
                         if ($resultado > 0) {
                             while ($a = mysqli_fetch_array($consulta)) {
@@ -65,8 +65,9 @@ require_once '../../conexion/conexion.php';
                                             <td>
                                                 <form action="editarAsignacion.php" method="POST">
                                                     <input type="hidden" value="<?php echo $a['fa_idAsignacion'] ?> " name="idAsignacion">
-                                                    <button type="submit" class="btn btn-info"><i class="fa-solid fa-hand-pointer"></i></button>
+                                                    <center><button type="submit" class="btn btn-info"><i class="fa-solid fa-hand-pointer"></i></button></center>
                                                 </form>
+                                                <center><a href="" id="btnEnvia" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#eliminarAsignacionModal" data-bs-id="<?= $a['fa_idAsignacion'] ?>"><i class="fa-solid fa-user-slash"></i></a></center>
                                             </td>
                                     <?php
                                         }
@@ -83,6 +84,15 @@ require_once '../../conexion/conexion.php';
             </div>
         </div>
     </div>
+    <?php include 'eliminarAsignacionModal.php'; ?>
+    <script>
+        let eliminarFolio = document.getElementById('eliminarAsignacionModal');
+        eliminarFolio.addEventListener('shown.bs.modal', event => {
+            let boton = event.relatedTarget;
+            let id = boton.getAttribute('data-bs-id');
+            eliminarFolio.querySelector('.modal-footer #id').value = id;
+        });
+    </script>
 
 </body>
 <script src="https://kit.fontawesome.com/7f41046fc7.js" crossorigin="anonymous"></script><!--Cuenta de sistemas2-->

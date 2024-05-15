@@ -13,7 +13,7 @@ formulario.addEventListener('submit', function(e){
             Swal.fire({
                 position: "top-end",
                 icon: "error",
-                title: "Error al actualizar",
+                title: "Error al ingresar",
                 confirmButtonText: "Error",
                 showConfirmButton: true,
                 timer: 2500

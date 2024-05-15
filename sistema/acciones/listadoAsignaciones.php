@@ -22,9 +22,9 @@ require_once '../../conexion/conexion.php';
 </head>
 
 <body>
-<?php
+    <?php
     include 'nav.php';
-?>
+    ?>
     <div class="container">
         <div class="row" style="padding-top: 10px;">
             <div class="form-group row">
@@ -34,7 +34,7 @@ require_once '../../conexion/conexion.php';
                             <h5 class="card-title"><i class="fas fa-check-circle"></i> Completados</h5>
                             <p class="card-text">
                                 <?php
-                                $general = mysqli_query($conexion, "SELECT estatus FROM fa_asignaciones; ");
+                                $general = mysqli_query($conexion, "SELECT estatus FROM fa_asignaciones WHERE estatus_a != 2 ; ");
                                 $completados = mysqli_query($conexion, "SELECT estatus FROM fa_asignaciones WHERE estatus = 'Finalizado' ");
                                 echo $resultado = mysqli_num_rows($completados) . ' de ' . $generales = mysqli_num_rows($general);
                                 ?>
@@ -93,9 +93,9 @@ require_once '../../conexion/conexion.php';
                     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6" style="padding-bottom: 15px;">
                         <center><a style="margin-bottom: 10px;" href="excel/completo.php" class="btn btn-info ancla"><i class="fa-solid fa-file-excel"></i> Reporte General</a></center>
                         <a href="verCompletados.php" class="btn btn-secondary" style="display: inline-block; width:49%"><i class="fa-solid fa-eye"></i> Ver completados</a>
-                        <button type="button" data-bs-target="#addAsignacionn" class="btn btn-success" style="display: inline-block; width:49%"  data-bs-toggle="modal"><i class="fas fa-plus-circle"></i> Nueva solicitud</button>
+                        <button type="button" data-bs-target="#addAsignacionn" class="btn btn-success" style="display: inline-block; width:49%" data-bs-toggle="modal"><i class="fas fa-plus-circle"></i> Nueva solicitud</button>
                         <?php include "addAsignacionModal.php" ?>
-                        
+
                     </div>
                     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6" style="padding-bottom: 15px;">
                         <form action="" method="post">
@@ -123,33 +123,42 @@ require_once '../../conexion/conexion.php';
                         </tbody>
                     </table>
                 </div>
-                <script>
-                    getData()
-                    document.getElementById("campo").addEventListener("keyup", getData)
 
-                    function getData() {
-                        let input = document.getElementById("campo").value
-                        let content = document.getElementById("content")
-                        let url = "busquedaEstatus.php"
-                        let formData = new FormData()
-                        formData.append('campo', input)
-                        fetch(url, {
-                                method: "POST",
-                                body: formData
-                            }).then(response => response.json())
-                            .then(data => {
-                                content.innerHTML = data
-                            })
-                            .catch(function(error) {
-                                console.log(error)
-                            })
-                    }
-                </script>
 
             </div>
         </div>
     </div>
+    <?php include 'eliminarAsignacionModal.php'; ?>
+    <script>
+        getData()
+        document.getElementById("campo").addEventListener("keyup", getData)
 
+        function getData() {
+            let input = document.getElementById("campo").value
+            let content = document.getElementById("content")
+            let url = "busquedaEstatus.php"
+            let formData = new FormData()
+            formData.append('campo', input)
+            fetch(url, {
+                    method: "POST",
+                    body: formData
+                }).then(response => response.json())
+                .then(data => {
+                    content.innerHTML = data
+                })
+                .catch(function(error) {
+                    console.log(error)
+                })
+        };
+
+        let elimina = document.getElementById('eliminarAsignacionModal');
+        elimina.addEventListener('shown.bs.modal', event => {
+            let button = event.relatedTarget
+            let id = button.getAttribute('data-bs-id')
+            elimina.querySelector('.modal-footer #id').value = id
+            console.log(id);
+        });
+    </script>
 </body>
 <script src="https://kit.fontawesome.com/7f41046fc7.js" crossorigin="anonymous"></script><!--Cuenta de sistemas2-->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

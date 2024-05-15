@@ -34,7 +34,8 @@ require_once '../../../conexion/conexion.php';
                     </div>
                     <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
                         <label for="norma">Norma</label>
-                        <select name="norma" id="norma" class="form-select">
+                        <select name="norma" id="norma" class="form-select" required>
+                            <option value="0">Selecciona una Norma</option>
                             <?php
                             $norma = mysqli_query($conexion, "SELECT * FROM fa_normas WHERE estatus = 1");
                             $resultado = mysqli_num_rows($norma);

@@ -8,7 +8,7 @@ if($_SESSION['active'] !=  true){
 require '../../../conexion/conexion.php';
 $usuario = $_SESSION['idUsuario'];
 
-$columns = ['fa_idAsignacion', 'oficio', 'cliente', 'norma', 'fechAsignacion', 'inspector', 'estatus','id_usuario','fa_nombre','fa_apellido'];
+$columns = ['fa_idAsignacion', 'oficio', 'cliente', 'norma', 'fechAsignacion', 'inspector', 'estatus','id_usuario','fa_nombre','fa_apellido','estatus_a'];
 $table = "fa_asignaciones";
 $campo = isset($_POST['campo']) ? $conexion->real_escape_string( $_POST['campo'] ) : null ;
 $where = '';
@@ -28,7 +28,11 @@ if($campo != null){
 $sql = "SELECT " . implode(", ", $columns ) . "
 FROM $table
 INNER JOIN fa_usuarios ON inspector = id_usuario
-$where AND estatus != 'Finalizado' AND inspector = '$usuario' ORDER BY fechAsignacion ASC
+$where 
+AND estatus != 'Finalizado'
+AND inspector = '$usuario'
+AND estatus_a != 2
+ORDER BY fechAsignacion ASC
 " ;
 
 $resultado = $conexion->query($sql);

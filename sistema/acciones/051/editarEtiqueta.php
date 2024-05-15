@@ -716,15 +716,15 @@ $resultado = mysqli_num_rows($consulta);
                             $cambiar = new DateTime($hoy);
                             $compara = $cambiar->format('d-m-Y'); //hoy
                             $formatear1 = $recepcion->format('d-m-Y');
-                            if ($compara > $formatearFinal) {
+                            if ($hoy > $fechaFinal) {
                             ?>
                                 <input type="text" name="fechaFinal" id="fechaFinal" class="form-control" value="<?= $formatearFinal  ?>" readonly style="background: red; color:azure">
                             <?php
-                            } elseif ($compara < $formatearFinal) {
+                            } elseif ($hoy < $fechaFinal) {
                             ?>
                                 <input type="text" name="fechaFinal" id="fechaFinal" class="form-control" value="<?= $formatearFinal ?>" readonly style="background: yellow; color:black ">
                             <?php
-                            } elseif ($formatear1 == $compara) {
+                            } elseif ($formatear1 == $hoy) {
                             ?>
                                 <input type="text" name="fechaFinal" id="fechaFinal" class="form-control" value="<?= $formatearFinal ?>" readonly style="background: green;">
                             <?php

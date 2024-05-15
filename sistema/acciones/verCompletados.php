@@ -34,7 +34,7 @@ require_once '../../conexion/conexion.php';
                             <h5 class="card-title"><i class="fas fa-check-circle"></i> Completados</h5>
                             <p class="card-text">
                                 <?php
-                                $general = mysqli_query($conexion, "SELECT estatus FROM fa_asignaciones; ");
+                                $general = mysqli_query($conexion, "SELECT estatus FROM fa_asignaciones WHERE estatus_a != 2; ");
                                 $completados = mysqli_query($conexion, "SELECT estatus FROM fa_asignaciones WHERE estatus = 'Finalizado' ");
                                 echo $resultado = mysqli_num_rows($completados) . ' de ' . $generales = mysqli_num_rows($general);
                                 ?>

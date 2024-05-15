@@ -33,7 +33,7 @@ require_once '../../../conexion/conexion.php';
                             <p class="card-text">
                                 <?php
                                 $usuario = $_SESSION['idUsuario'];
-                                $general = mysqli_query($conexion, "SELECT estatus FROM fa_asignaciones WHERE inspector = '$usuario' ; ");
+                                $general = mysqli_query($conexion, "SELECT estatus FROM fa_asignaciones WHERE inspector = '$usuario' AND estatus_a != 2 ; ");
                                 $completados = mysqli_query($conexion, "SELECT estatus FROM fa_asignaciones WHERE estatus = 'Finalizado' AND inspector = '$usuario' ");
                                 echo $resultado = mysqli_num_rows($completados) . ' de ' . $generales = mysqli_num_rows($general);
                                 ?>

@@ -58,7 +58,7 @@ require_once '../../../conexion/conexion.php';
                 </div>
             </div>
             <div class="table-responsive">
-                <table class="table table-bordered tanble-hover">
+                <table class="table table-bordered table-hover">
                     <h2 class="titulo2">Listado Etiquetas</h2>
                     <thead class="table-primary pegajoso">
                         <th>No</th>

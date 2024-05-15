@@ -150,7 +150,7 @@ if ($_SESSION['active'] != true) {
     </div>
 
     <?php include 'editarUsuario.php'; ?>
-    <?php include 'eliminarModal.php'; ?>
+    <?php include 'eliminarModal.php'; ?> 
     <script>
         let editarModal = document.getElementById('editaModal')
         let eliminaModal = document.getElementById('eliminarModal')
