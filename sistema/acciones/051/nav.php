@@ -44,8 +44,19 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a href="../../usuarios/agregarUsuario.php" class="nav-link active" aria-current="page"><i class="fa-solid fa-users"></i> Inspectores</a>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link active dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-regular fa-hand-pointer"></i> Otros</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../../usuarios/agregarUsuario.php" class="dropdown-item" aria-current="page"><i class="fa-solid fa-users"></i> Inspectores</a>
+                            </li>
+                            <li>
+                                <a href="../../normas/index.php" class="dropdown-item" aria-current="page"><i class="fa-solid fa-users"></i> Normas</a>
+                            </li>
+                            <li>
+                                <a href="../../clientes/index.php" class="dropdown-item" aria-current="page"><i class="fa-solid fa-users"></i> Clientes</a>
+                            </li>
+                        </ul>
                     </li>
                 <?php
                 } elseif ($_SESSION['fa_rol'] == 3 || $_SESSION['fa_rol'] == 5 || $_SESSION['fa_rol'] == 6) {
