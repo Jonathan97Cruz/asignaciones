@@ -6,7 +6,7 @@ include('../../../conexion/conexion.php');
 $folio = $_POST['folios'];
 
 $jsonData = array();
-$select = ("SELECT folios FROM fa_asignaciones WHERE folios = '".$folio."' ");
+$select = ("SELECT folios FROM fa_asignaciones WHERE folios = ".$folio." AND estatus_a != 2 ");
 $query = mysqli_query($conexion, $select);
 $total = mysqli_num_rows($query);
 

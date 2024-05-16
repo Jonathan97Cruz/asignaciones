@@ -9,7 +9,7 @@ formulario.addEventListener('submit', function(e){
     })
     .then(res => res.json())
     .then(data => {
-        if(data === 'error'){
+        if(data == 'error'){
             Swal.fire({
                 position: "top-end",
                 icon: "error",

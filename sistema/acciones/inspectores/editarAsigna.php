@@ -183,7 +183,7 @@ require_once '../../../conexion/conexion.php';
                                         <?php
                                         } elseif ($a['estatus'] != 'Finalizado') {
                                         ?>
-                                            <input type="date" name="fechaEntrega" id="" class="form-control" required min="<?= date('Y-m-d') ?>"  max="<?= date('Y-m-d') ?>">
+                                            <input type="date" name="fechaEntrega" id="" class="form-control" required min="<?= date('Y-m-d') ?>" max="<?= date('Y-m-d') ?>">
                                         <?php
                                         } elseif ($a['estatus'] == 'Finalizado') {
                                         ?>
@@ -236,9 +236,9 @@ require_once '../../../conexion/conexion.php';
                                         <h5><i class="fa-solid fa-hashtag"></i> Días Supervisor</h5><!--Listo usuario-->
                                         <?php
                                         $fechaS = $a['fechaIngreso'];
-                                        
+
                                         $transcurridoU = (strtotime($hoy) - strtotime($fechaS)) / (60 * 60 * 24);
-                                        
+
                                         if ($a['estatus'] == 'Pendiente') {
                                             if ($fechaS == null || $fechaS == '0000-00-00') {
                                                 $transcurridoU = 0;
@@ -418,7 +418,7 @@ require_once '../../../conexion/conexion.php';
                                             <input type="text" name="transcurrido" id="" value="<?php echo round($transcurrido) ?>" class="form-control" style="text-align: center;" readonly>
                                             <?php
                                         } elseif ($a['estatus'] == 'En revisión' || $a['estatus'] == 'En proceso') {
-                                            if ($a['fechaEntrega'] != '0000-00-00' && $a['fechaEntrega'] != NULL ) {
+                                            if ($a['fechaEntrega'] != '0000-00-00' && $a['fechaEntrega'] != NULL) {
                                             ?>
                                                 <input type="text" name="transcurrido" id="" value="<?php echo $a['transcurrido'] ?>" class="form-control" style="text-align: center;" readonly>
                                             <?php
@@ -462,7 +462,7 @@ require_once '../../../conexion/conexion.php';
                                         $fechaS = $a['fechaIngreso'];
                                         $fechaE = $a['fechaEntrega'];
                                         $transcurridoU = (strtotime($hoy) - strtotime($fechaS)) / (60 * 60 * 24);
-                                        
+
                                         if ($a['estatus'] == 'Pendiente') {
                                             if ($fechaS == null || $fechaS == '0000-00-00') {
                                                 $transcurridoU = 0;
@@ -475,7 +475,7 @@ require_once '../../../conexion/conexion.php';
                                             <?php
                                             }
                                         } elseif ($a['estatus'] == 'En revisión' || $a['estatus'] == 'En proceso') {
-                                            if ($a['fechaEntrega'] != '0000-00-00' && $a['fechaEntrega'] != 'NULL' ) {
+                                            if ($a['fechaEntrega'] != '0000-00-00' && $a['fechaEntrega'] != 'NULL') {
                                                 $transcurridoE = (strtotime($hoy) - strtotime($fechaE)) / (60 * 60 * 24);
                                             ?>
                                                 <input type="text" name="transcurridoU" id="" value="<?php echo round($transcurridoE) ?>" class="form-control" style="text-align: center;" readonly>
@@ -508,6 +508,14 @@ require_once '../../../conexion/conexion.php';
                                         } elseif ($a['estatus'] == "En revisión") {
                                         ?>
                                             <select name="estatus" id="estatus" class="form-select" style="background-color: gray; color:black">
+                                                <option value="<?php echo $a['estatus'] ?>"> <?php echo $a['estatus'] ?> </option>
+                                                <option value="En proceso">En proceso</option>
+                                                <option value="En revisión">En revisión</option>
+                                            </select>
+                                        <?php
+                                        } elseif ($a['estatus'] == "Pendiente") {
+                                        ?>
+                                            <select name="estatus" id="estatus" class="form-select" style="background-color: red; color:black">
                                                 <option value="<?php echo $a['estatus'] ?>"> <?php echo $a['estatus'] ?> </option>
                                                 <option value="En proceso">En proceso</option>
                                                 <option value="En revisión">En revisión</option>
