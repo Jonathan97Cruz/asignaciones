@@ -32,8 +32,8 @@ $verifica = mysqli_query($conexion, "SELECT `folios` FROM `fa_asignaciones` WHER
 if (mysqli_num_rows($verifica) > 0) {
     echo json_encode('error');
 } else {
-    $sql = mysqli_query($conexion, "INSERT INTO  `fa_asignaciones`(`oficio`,`cliente`,`folios`,`norma`,`fechAsignacion`,`inspector`,`estatus`,`prioridad`,`fechaRecepcion`,`fechaIngreso`,`observaciones`,`fechaLimite`,`asignador`) 
-    VALUES ('$oficio','$cliente','$folios','$norma','$fechAsignacion','$usuario','$estatus','$prioridad','$hoy','$fechaIngreso','$observaciones','$fechaLimite','$asignador')");
+    $sql = mysqli_query($conexion, "INSERT INTO  `fa_asignaciones`(`oficio`,`cliente`,`folios`,`norma`,`fechAsignacion`,`inspector`,`estatus`,`prioridad`,`fechaRecepcion`,`fechaIngreso`,`observaciones`,`fechaLimite`,`asignador`, `estatus_a`) 
+    VALUES ('$oficio','$cliente','$folios','$norma','$fechAsignacion','$usuario','$estatus','$prioridad','$hoy','$fechaIngreso','$observaciones','$fechaLimite','$asignador', 1)");
     if ($sql == true) {
         echo json_encode('Correcto');
     } else {

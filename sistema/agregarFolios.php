@@ -38,8 +38,8 @@ if (is_array($_FILES['excel']) && count($_FILES['excel']) > 0) {
                 $hoy = date('Y-m-d');
                 $rece = "Recepción";
                 $nor = "Normal";
-                $consulta = mysqli_query($conexion, "INSERT INTO fa_asignaciones(folios, norma, cliente, fechaRecepcion,estatus,prioridad)
-                                         VALUES ('$row[0]', '$row[1]', '$row[2]', '$hoy','$rece','$nor' ) ");
+                $consulta = mysqli_query($conexion, "INSERT INTO fa_asignaciones(folios, norma, cliente, fechaRecepcion,estatus,prioridad,estatus_a)
+                                         VALUES ('$row[0]', '$row[1]', '$row[2]', '$hoy','$rece','$nor',1 ) ");
                 //$respuesta = $conexion->query($consulta);
             } else {
                 // Si ya existe, mostrar un mensaje de error
