@@ -28,7 +28,7 @@ FROM $table
 INNER JOIN fa_usuarios ON inspector = id_usuario
 $where 
 AND estatus != 'Finalizado' 
-AND estatus_a != 2" ;
+AND estatus_a != 2 LIMIT 10" ;
 
 $resultado = $conexion->query($sql);
 $num_rows = $resultado->num_rows;

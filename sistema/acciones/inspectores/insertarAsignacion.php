@@ -28,16 +28,27 @@ if ($estatus == 'Pendiente' && $prioridad == 'Normal') {
 
 $asignador = (empty($_POST['asignador'])) ? NULL : $_POST['asignador']; //1
 
+
+
 $verifica = mysqli_query($conexion, "SELECT `folios` FROM `fa_asignaciones` WHERE `folios` LIKE '%$folios' AND estatus_a != 2");
 if (mysqli_num_rows($verifica) > 0) {
     echo json_encode('error');
 } else {
-    $estatusA = 1;
-    $sql = mysqli_query($conexion, "INSERT INTO  `fa_asignaciones`(`oficio`,`cliente`,`folios`,`norma`,`fechAsignacion`,`inspector`,`estatus`,`prioridad`,`fechaRecepcion`,`fechaIngreso`,`observaciones`,`fechaLimite`,`asignador`, `estatus_a`) 
-    VALUES ('$oficio','$cliente','$folios','$norma','$fechAsignacion','$usuario','$estatus','$prioridad','$hoy','$fechaIngreso','$observaciones','$fechaLimite','$asignador', '$estatusA') ");
-    if ($sql == true) {
-        echo json_encode('Correcto');
+    $verificarCliente = mysqli_query($conexion, "SELECT * FROM fa_clientes WHERE cliente = '$cliente' ");
+    if (mysqli_num_rows($verificarCliente) > 0) {
+        while ($a = mysqli_fetch_array($verificarCliente)) {
+            $idCliente = $a['id'];
+        }
+        $estatusA = 1;
+        $cambiar_string = implode(',', $norma);
+        $sql = mysqli_query($conexion, "INSERT INTO  `fa_asignaciones`(`oficio`,`cliente`,`folios`,`norma`,`fechAsignacion`,`inspector`,`estatus`,`prioridad`,`fechaRecepcion`,`fechaIngreso`,`observaciones`,`fechaLimite`,`asignador`, `estatus_a`) 
+        VALUES ('$oficio','$idCliente','$folios','$cambiar_string','$fechAsignacion','$usuario','$estatus','$prioridad','$hoy','$fechaIngreso','$observaciones','$fechaLimite','$asignador', '$estatusA') ");
+        if ($sql == true) {
+            echo json_encode('Correcto');
+        } else {
+            echo json_encode('error');
+        }
     } else {
-        echo json_encode('error');
+        echo json_encode("error");
     }
 }
